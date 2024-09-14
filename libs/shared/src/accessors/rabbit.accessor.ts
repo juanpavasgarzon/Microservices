@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { RmqOptions, Transport } from '@nestjs/microservices';
+import { RmqContext, RmqOptions, Transport } from '@nestjs/microservices';
 import { ConfigService } from '@nestjs/config';
 
 @Injectable()
@@ -16,11 +16,18 @@ export class RabbitAccessor {
       transport: Transport.RMQ,
       options: {
         urls: [`amqp://${USER}:${PASSWORD}@${HOST}:${PORT}`],
+        noAck: false,
         queue: queue,
         queueOptions: {
           durable: true,
         },
       },
     };
+  }
+
+  acknowledgeMessage(context: RmqContext) {
+    const channel = context.getChannelRef();
+    const message = context.getMessage();
+    channel.ack(message);
   }
 }

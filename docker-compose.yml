@@ -38,6 +38,7 @@ services:
       - .env
     depends_on:
       - rabbitmq
+      - mariadb
     volumes:
       - .:/usr/src/app
       - /usr/src/app/node_modules
@@ -56,6 +57,7 @@ services:
       - .env
     depends_on:
       - rabbitmq
+      - mariadb
     volumes:
       - .:/usr/src/app
       - /usr/src/app/node_modules
@@ -74,6 +76,7 @@ services:
       - .env
     depends_on:
       - rabbitmq
+      - mariadb
     volumes:
       - .:/usr/src/app
       - /usr/src/app/node_modules
@@ -81,23 +84,24 @@ services:
       - microservices-network
     command: npm run start:dev security
 
-  stock:
+  document:
     build:
       context: ./
-      dockerfile: ./apps/stock/Dockerfile
-    container_name: microservices-stock
+      dockerfile: ./apps/document/Dockerfile
+    container_name: microservices-document
     ports:
       - '4003:3000'
     env_file:
       - .env
     depends_on:
       - rabbitmq
+      - mariadb
     volumes:
       - .:/usr/src/app
       - /usr/src/app/node_modules
     networks:
       - microservices-network
-    command: npm run start:dev stock
+    command: npm run start:dev document
 
 networks:
   microservices-network:

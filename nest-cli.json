@@ -19,15 +19,6 @@
         "tsConfigPath": "apps/inventory/tsconfig.app.json"
       }
     },
-    "stock": {
-      "type": "application",
-      "root": "apps/stock",
-      "entryFile": "main",
-      "sourceRoot": "apps/stock/src",
-      "compilerOptions": {
-        "tsConfigPath": "apps/stock/tsconfig.app.json"
-      }
-    },
     "security": {
       "type": "application",
       "root": "apps/security",
@@ -53,6 +44,15 @@
       "sourceRoot": "libs/shared/src",
       "compilerOptions": {
         "tsConfigPath": "libs/shared/tsconfig.lib.json"
+      }
+    },
+    "document": {
+      "type": "application",
+      "root": "apps/document",
+      "entryFile": "main",
+      "sourceRoot": "apps/document/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/document/tsconfig.app.json"
       }
     }
   }
